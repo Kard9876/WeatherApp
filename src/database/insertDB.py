@@ -20,7 +20,7 @@ try:
         data = pd.read_excel(excel_path)
         dataLen = len(data)
 
-        query = "insert into Cities (City, Country, Latitude, Longitude) values (%s, %s, %s, %s)"
+        query = "insert into Cities (City, Country, Latitude, Longitude, Population) values (%s, %s, %s, %s, %s)"
 
         for i in range(0, dataLen):
             rowData = data.loc[i]
@@ -29,8 +29,12 @@ try:
             country = rowData.country
             latitude = rowData.lat
             longitude = rowData.lng
+            population = rowData.population
 
-            cursor.execute(query, (city, country, latitude, longitude))
+            if pd.isnull(population):
+                population = 0
+
+            cursor.execute(query, (city, country, latitude, longitude, population))
 
         connection.commit()
         cursor.close()

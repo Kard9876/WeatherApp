@@ -7,11 +7,18 @@
     <meta name="author" content="Kard9876">
     <meta name="Description" content="Weather App's Home Page">
     <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="icon" href="../Images/favicon.png" type="image/x-icon">
     <title>Home Page</title>
 </head>
 
-<body>
-    <div id="searchBar"></div>
+<body onload="loadPage()">
+    <form class="searchBar" onsubmit="searchCities(event)">
+        <div class="textInputsContainer">
+            <input type="text" class="searchInput" placeholder="City">
+            <input type="text" class="searchInput" placeholder="Country">
+        </div>
+        <input type="image" src="../Images/searchIcon.png" class="searchIcon" id="searchIcon">
+    </form>
 
     <div id="searchResultsContainer"></div>
 

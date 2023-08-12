@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    /* Body */
+    --BODY-BGCOLOR: rgb(95, 95, 95);
+
+    /* Search Bar */
+    --SEARCH-BAR-HEIGHT: 20vh;
+    --SEARCH-BAR-WIDTH: 100vw;
+
+    /* Search Icon */
+    --SEARCH-ICON-HEIGHT-WIDTH: min(15Vh, 15vw);
+
+    /* Text Input Container */
+    --TEXT-INPUT-CONTAINER-HEIGHT: 18vh;
+    --TEXT-INPUT-CONTAINER-WIDTH: 60vw;
+
+    /* Search Input */
+    --SEARCH-INPUT-HEIGHT: 7vh;
+    --SEARCH-INPUT-WIDTH: 40vw;
+    --SEARCH-INPUT-FONT-SIZE: min(4vh, 9vw);
+}
+
+body {
+    background-color: var(--BODY-BGCOLOR);
+}
+
+.searchBar {
+    height: var(--SEARCH-BAR-HEIGHT);
+    width: var(--SEARCH-BAR-WIDTH);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.searchIcon {
+    height: var(--SEARCH-ICON-HEIGHT-WIDTH);
+    width: var(--SEARCH-ICON-HEIGHT-WIDTH);
+    object-fit: contain;
+}
+
+.textInputsContainer {
+    min-height: var(--TEXT-INPUT-CONTAINER-HEIGHT);
+    max-height: var(--TEXT-INPUT-CONTAINER-HEIGHT);
+    min-width: var(--TEXT-INPUT-CONTAINER-WIDTH);
+    max-width: var(--TEXT-INPUT-CONTAINER-WIDTH);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.searchInput {
+    height: var(--SEARCH-INPUT-HEIGHT);
+    width: var(--SEARCH-INPUT-WIDTH);
+    font-size: var(--SEARCH-INPUT-FONT-SIZE);
+    align-self: center;
+    border: 3px solid black;
+    border-radius: 15px;
+    font-weight: 700;
+}

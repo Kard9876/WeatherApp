@@ -10,5 +10,6 @@ create table Cities(
     Country varchar(50) not null,
     Latitude double not null,
     Longitude double not null,
+    Population int not null,
     primary key (Id)
 );
