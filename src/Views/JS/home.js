@@ -1,5 +1,9 @@
+import { setCookieValue, removeAllChildren } from './common.js'
+
 /* Constants */
 const searchCitiesURL = '/searchCities?'
+const weatherCityURL = '../HTML/weatherCity.html'
+
 
 // Function that loads all thhats necessary when the page is loaded
 window.loadPage = function loadPage() {
@@ -23,5 +27,40 @@ window.searchCities = function searchCities(event) {
     cityElem.value = ""
     countryElem.value = ""
 
-    console.log(city, country)
+    fetch(searchCitiesURL + new URLSearchParams({ city: city, country: country }))
+        .then((res) => res.json()).then((data) => {
+
+            let container = document.getElementById('searchResultsContainer')
+
+            removeAllChildren(container)
+
+            for (let location of data.results) {
+                let cityName = location.City
+                let countryName = location.Country
+                let locationId = location.Id
+
+                let div = document.createElement('div')
+                div.classList = "searchResult"
+
+                let p = document.createElement('p')
+                p.classList = "searchResultContent"
+
+                p.innerHTML = cityName + ', ' + countryName
+
+                div.append(p)
+
+                div.addEventListener('click', function () {
+                    weatherCity(locationId)
+                })
+
+                container.append(div)
+            }
+
+        })
+}
+
+function weatherCity(id) {
+    setCookieValue("cityId", id, { 'expiration': { 'minutes': 10 } })
+
+    window.location = weatherCityURL
 }

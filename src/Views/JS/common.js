@@ -52,4 +52,11 @@ function deleteCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 }
 
-export { getCookieValue, setCookieValue }
+/* Function that removes all children elements from a given element */
+function removeAllChildren(elem) {
+    while (elem.firstChild) {
+        elem.removeChild(elem.firstChild)
+    }
+}
+
+export { getCookieValue, setCookieValue, removeAllChildren }

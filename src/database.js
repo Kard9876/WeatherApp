@@ -1,4 +1,4 @@
-import mysql from 'mysql'
+import * as mysql from 'mysql'
 
 const databaseConfig = {
     host: '127.0.0.1',
@@ -9,9 +9,24 @@ const databaseConfig = {
 
 async function searchCities(city, country) {
     return new Promise((resolve, reject) => {
-        const connection = mysql.connect(databaseConfig)
+        const connection = mysql.createConnection(databaseConfig)
 
-        connection.query()
+        connection.connect()
+
+        city = city.replace('\'', '\\\'')
+        country = country.replace('\'', '\\\'')
+
+        let query = `call searchCities('${city}', '${country}')`
+
+        connection.query(query, function (err, rows, fields) {
+            if (err) {
+                console.error(err)
+
+                return
+            }
+
+            resolve(rows[0])
+        })
 
         connection.end()
     })

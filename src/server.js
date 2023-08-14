@@ -3,7 +3,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { renderFile } from 'ejs'
-import { searchCities } from './database'
+import { searchCities } from './database.js'
 
 /* Constants */
 const __filename = fileURLToPath(import.meta.url)
@@ -44,7 +44,7 @@ router.get('/', function (req, res) {
 // Search for cities
 router.get('/searchCities?', async function (req, res) {
     let city = req.query.city
-    let country = req.query.city
+    let country = req.query.country
 
     let results = await searchCities(city, country)
 
