@@ -8,6 +8,8 @@ const backHomeURL = '../HTML/home.html'
 
 const getCityLatLongInfoURL = '/getCityLatLong?'
 
+const ApiKey = '7c6b100b4095b9eec996daa6c85d3044'
+
 /**
  * Function that loads page's info
  */
@@ -37,6 +39,8 @@ function searchCityWeather(cityId) {
             let cityLatitude = data.results[0].Latitude
             let cityLongitude = data.results[0].Longitude
 
-            console.log(cityLatitude, cityLongitude)
+            let weatherApiURL = `https://api.openweathermap.org/data/3.0/onecall?lat={${cityLatitude}}&lon={${cityLongitude}}&exclude={}&appid={${ApiKey}}`
+
+            fetch(weatherApiURL).then((res) => { console.log(res) })
         })
 }
