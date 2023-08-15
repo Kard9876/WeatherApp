@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    /* Body */
+    --BODY-BGCOLOR: rgb(95, 95, 95);
+
+    /* Back Home Div */
+    --BACK-HOME-DIV-HEIGHT: 10vh;
+    --BACK-HOME-DIV-WIDTH: 100vw;
+
+    /* Back Home Tag */
+    --BACK-HOME-TAG-HEIGHT: 8vh;
+    --BACK-HOME-TAG-WIDTH: 80vw;
+    --BACK-HOME-TAG-FONT-SIZE: min(4vh, 12vw);
+    --BACK-HOME-TAG-COLOR: rgb(203, 178, 121);
+}
+
+body {
+    background-color: var(--BODY-BGCOLOR);
+}
+
+#backHomeDiv {
+    min-height: var(--BACK-HOME-DIV-HEIGHT);
+    max-height: var(--BACK-HOME-DIV-HEIGHT);
+    min-width: var(--BACK-HOME-DIV-WIDTH);
+    max-width: var(--BACK-HOME-DIV-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backHomeTag {
+    height: var(--BACK-HOME-TAG-HEIGHT);
+    width: var(--BACK-HOME-TAG-WIDTH);
+
+    font-size: var(--BACK-HOME-TAG-FONT-SIZE);
+
+    word-wrap: break-word;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--BACK-HOME-TAG-COLOR);
+}
+
+#backHomeTag::after,
+#backHomeTag::before {
+    color: var(--BACK-HOME-TAG-COLOR);
+}

@@ -9,4 +9,12 @@ begin
     order by Population desc;
 end //
 
+delimiter //
+create procedure getCityLatLong(in cityId int)
+begin
+	select Latitude, Longitude
+    from Cities
+    where Id = cityId;
+end //
+
 delimiter ;

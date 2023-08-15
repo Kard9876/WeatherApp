@@ -59,4 +59,4 @@ function removeAllChildren(elem) {
     }
 }
 
-export { getCookieValue, setCookieValue, removeAllChildren }
+export { getCookieValue, setCookieValue, deleteCookie, removeAllChildren }

@@ -59,6 +59,7 @@ window.searchCities = function searchCities(event) {
         })
 }
 
+// Function that load the page with the city's weather
 function weatherCity(id) {
     setCookieValue("cityId", id, { 'expiration': { 'minutes': 10 } })
 

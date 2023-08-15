@@ -3,7 +3,7 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { renderFile } from 'ejs'
-import { searchCities } from './database.js'
+import { searchCities, getCityLatLong } from './database.js'
 
 /* Constants */
 const __filename = fileURLToPath(import.meta.url)
@@ -49,4 +49,13 @@ router.get('/searchCities?', async function (req, res) {
     let results = await searchCities(city, country)
 
     res.json({ results: results })
+})
+
+// Get a city's latitude and longitude
+router.get('/getCityLatLong?', async function (req, res) {
+    let cityId = req.query.cityId
+
+    let ans = await getCityLatLong(cityId)
+
+    res.json({ results: ans })
 })

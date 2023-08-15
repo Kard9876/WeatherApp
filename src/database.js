@@ -32,4 +32,26 @@ async function searchCities(city, country) {
     })
 }
 
-export { searchCities }
+async function getCityLatLong(cityId) {
+    return new Promise((resolve, reject) => {
+        const connection = mysql.createConnection(databaseConfig)
+
+        connection.connect()
+
+        let query = `call getCityLatLong('${cityId}')`
+
+        connection.query(query, function (err, rows, fields) {
+            if (err) {
+                console.error(err)
+
+                return
+            }
+
+            resolve(rows[0])
+        })
+
+        connection.end()
+    })
+}
+
+export { searchCities, getCityLatLong }
