@@ -39,8 +39,21 @@ function searchCityWeather(cityId) {
             let cityLatitude = data.results[0].Latitude
             let cityLongitude = data.results[0].Longitude
 
-            let weatherApiURL = `https://api.openweathermap.org/data/3.0/onecall?lat={${cityLatitude}}&lon={${cityLongitude}}&exclude={}&appid={${ApiKey}}`
+            let curWeatherApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${cityLatitude}&lon=${cityLongitude}&units=metric&appid=${ApiKey}`
 
-            fetch(weatherApiURL).then((res) => { console.log(res) })
+            // Current Weather
+            fetch(curWeatherApiURL).then((res) => res.json()).then((data) => {
+                console.log("Cur")
+                console.log(data)
+            })
+
+            // Get Next 5 days weather prevision
+            let next5WeatherApiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityLatitude}&lon=${cityLongitude}&units=metric&appid=${ApiKey}`
+
+            // Current Weather
+            fetch(next5WeatherApiURL).then((res) => res.json()).then((data) => {
+                console.log("Next")
+                console.log(data)
+            })
         })
 }
