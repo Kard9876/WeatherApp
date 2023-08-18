@@ -64,18 +64,16 @@ function searchCityWeather(cityId) {
 
                 let container = document.getElementById('curWeather')
 
-                let elem = createCurWeatherDiv(weatherId, weather, temperature, humidity, wind)
+                let elem = createCurWeatherDiv(weatherId, weather, weatherDescription, temperature, humidity, wind)
 
                 container.append(elem)
-
-                console.log(`Cur\nWeatherId: ${weatherId}\nWeather: ${weather}\nTemperature: ${temperature} ºC\nHumidity: ${humidity}%\nWind: ${wind}m/s`)
-                console.log(data)
             })
 
             // Get Next 5 days weather prevision
             let next5WeatherApiURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityLatitude}&lon=${cityLongitude}&units=metric&appid=${ApiKey}`
 
             // Current Weather
+            // TODO
             fetch(next5WeatherApiURL).then((res) => res.json()).then((data) => {
                 console.log("Next")
                 console.log(data)
@@ -83,6 +81,11 @@ function searchCityWeather(cityId) {
         })
 }
 
+/**
+ * Get Weather's icon based on weather's id
+ * @param {*} cod Weather's id
+ * @returns Weather's icon
+ */
 function getWeatherIcon(cod) {
     if (cod >= 200 && cod <= 232) return weatherIcons.thunderstorm
 
@@ -103,31 +106,168 @@ function getWeatherIcon(cod) {
     return weatherIcons.broken_clouds
 }
 
+/**
+ * Create current weather's display element
+ * @param {*} weatherId Weather's id 
+ * @param {*} weather Weather's name
+ * @param {*} weatherDescription Weather's description
+ * @param {*} temperature Weather's temperature
+ * @param {*} humidity Weather's humidity
+ * @param {*} wind Weather's wind speed
+ * @returns current weather's display element
+ */
 function createCurWeatherDiv(weatherId, weather, weatherDescription, temperature, humidity, wind) {
     let container = document.createElement("div")
+    container.classList = "centralDiv"
 
     // Div containing weather's icon and type
-    let div1 = document.createElement("div")
+    let bigDiv = createWeatherImage(weatherId, weather, weatherDescription, "curBigIcon", "curBigText")
+
+    // Div containing details such as temperature, humidity and wind speed
+    let smallDivContainer = document.createElement("div")
+    smallDivContainer.classList = "curSmallDivContainer"
+
+    // Temperature div
+    let smallDiv1 = createTemperatureElem(temperature, "curSmallIcon", "curSmallText")
+
+    // Humidity div
+    let smallDiv2 = createHumidityElem(humidity, "curSmallIcon", "curSmallText")
+
+    // Wind div
+    let smallDiv3 = createWindElem(wind, "curSmallIcon", "curSmallText")
+
+    smallDivContainer.append(smallDiv1)
+    smallDivContainer.append(smallDiv2)
+    smallDivContainer.append(smallDiv3)
+
+    container.append(bigDiv)
+    container.append(smallDivContainer)
+
+    return container
+}
+
+/**
+ * Create current weather's general information
+ * @param {*} weatherId Weather's id
+ * @param {*} weather Weather's name
+ * @param {*} weatherDescription Weather's description
+ * @param {*} imageClassList Image's classes
+ * @param {*} textClassList Text's classes
+ * @returns Current weather's general information
+ */
+function createWeatherImage(weatherId, weather, weatherDescription, imageClassList, textClassList) {
+    let div = document.createElement("div")
+    div.classList = "curBigDiv"
+
+    let imageDiv = document.createElement("div")
+    imageDiv.classList = imageClassList
 
     let image = document.createElement("img")
     image.src = getWeatherIcon(weatherId)
     image.alt = weatherDescription
-    // TODO css
-    image.classList = "bigIcon"
+    image.classList = "curBigImg"
+
+    imageDiv.append(image)
 
     let weatherType = document.createElement("p")
     weatherType.innerHTML = weather
+    weatherType.classList = textClassList
 
-    div1.append(image)
-    div1.append(weatherType)
+    div.append(imageDiv)
+    div.append(weatherType)
 
-    // TODO Div containing details such as temperature, humidity and wind speed
-    let div2 = document.createElement("div")
+    return div
+}
 
-    let temperatureElem = document.createDiv("")
+/**
+ * Create current weather's temperature information
+ * @param {*} temperature Weather's temperature
+ * @param {*} imageClassList Image's classes
+ * @param {*} textClassList Text's classes
+ * @returns Current weather's temperature information
+ */
+function createTemperatureElem(temperature, imageClassList, textClassList) {
+    let div = document.createElement("div")
+    div.classList = "curSmallDiv"
 
-    container.append(div1)
-    container.append(div2)
+    let imageDiv = document.createElement("div")
+    imageDiv.classList = imageClassList
 
-    return container
+    let temperatureImg = document.createElement("img")
+    temperatureImg.src = '../Images/thermometer.png'
+    temperatureImg.alt = 'Temperature:'
+    temperatureImg.classList = "curSmallImg"
+
+    imageDiv.append(temperatureImg)
+
+    let temperatureP = document.createElement("p")
+    temperatureP.classList = textClassList
+    temperatureP.innerHTML = temperature + 'ºC'
+
+    div.append(imageDiv)
+    div.append(temperatureP)
+
+    return div
+}
+
+/**
+ * Create current weather's humidity information
+ * @param {*} humidity Weather's humidity
+ * @param {*} imageClassList Image's classes
+ * @param {*} textClassList Text's classes
+ * @returns Current weather's humidity information
+ */
+function createHumidityElem(humidity, imageClassList, textClassList) {
+    let div = document.createElement("div")
+    div.classList = "curSmallDiv"
+
+    let imageDiv = document.createElement("div")
+    imageDiv.classList = imageClassList
+
+    let humidityImg = document.createElement("img")
+    humidityImg.src = '../Images/humidity.png'
+    humidityImg.alt = 'Humidity:'
+    humidityImg.classList = "curSmallImg"
+
+    imageDiv.append(humidityImg)
+
+    let humidityP = document.createElement("p")
+    humidityP.classList = textClassList
+    humidityP.innerHTML = humidity + '%'
+
+    div.append(imageDiv)
+    div.append(humidityP)
+
+    return div
+}
+
+/**
+ * Create current weather's wind speed information
+ * @param {*} wind Weather's wind speed
+ * @param {*} imageClassList Image's classes
+ * @param {*} textClassList Text's classes
+ * @returns Current weather's wind speed information
+ */
+function createWindElem(wind, imageClassList, textClassList) {
+    let div = document.createElement("div")
+    div.classList = "curSmallDiv"
+
+    let imageDiv = document.createElement("div")
+    imageDiv.classList = imageClassList
+
+    let windImg = document.createElement("img")
+    windImg.src = '../Images/wind.png'
+    windImg.alt = 'Wind Speed:'
+    windImg.classList = "curSmallImg"
+
+    imageDiv.append(windImg)
+
+    let windP = document.createElement("p")
+    windP.classList = textClassList
+    windP.innerHTML = wind + 'm/s'
+
+    div.append(imageDiv)
+    div.append(windP)
+
+    return div
 }

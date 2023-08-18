@@ -16,6 +16,42 @@
     --BACK-HOME-TAG-WIDTH: 80vw;
     --BACK-HOME-TAG-FONT-SIZE: min(4vh, 12vw);
     --BACK-HOME-TAG-COLOR: rgb(203, 178, 121);
+
+    /* Cur Weather */
+
+    /* Central Div */
+    --CUR-CENTRAL-DIV-HEIGHT: 30vh;
+    --CUR-CENTRAL-DIV-WIDTH: 100vw;
+
+    /* Big Div */
+    --CUR-BIG-DIV-HEIGHT: 30vh;
+    --CUR-BIG-DIV-WIDTH: 60vw;
+
+    /* Big Div Icon */
+    --CUR-BIG-ICON-HEIGHT: 20vh;
+    --CUR-BIG-ICON-WIDTH: 20vw;
+
+    /* Big Div Text */
+    --CUR-BIG-TEXT-HEIGHT: 10vh;
+    --CUR-BIG-TEXT-WIDTH: 28vw;
+    --CUR-BIG-TEXT-FONT-SIZE: min(3vh, 5vw);
+
+    /* Small Div Container */
+    --CUR-SMALL-DIV-CONTAINER-HEIGHT: 30vh;
+    --CUR-SMALL-DIV-CONTAINER-WIDTH: 40vw;
+
+    /* SMALL Div */
+    --CUR-SMALL-DIV-HEIGHT: 8vh;
+    --CUR-SMALL-DIV-WIDTH: 35vw;
+
+    /* SMALL Div Icon */
+    --CUR-SMALL-ICON-HEIGHT: 8vh;
+    --CUR-SMALL-ICON-WIDTH: 10vw;
+
+    /* SMALL Div Text */
+    --CUR-SMALL-TEXT-HEIGHT: 8vh;
+    --CUR-SMALL-TEXT-WIDTH: 15vw;
+    --CUR-SMALL-TEXT-FONT-SIZE: min(2.5vh, 3vw);
 }
 
 body {
@@ -54,4 +90,114 @@ body {
 #backHomeTag::after,
 #backHomeTag::before {
     color: var(--BACK-HOME-TAG-COLOR);
+}
+
+.centralDiv {
+    min-height: var(--CUR-CENTRAL-DIV-HEIGHT);
+    max-height: var(--CUR-CENTRAL-DIV-HEIGHT);
+    min-width: var(--CUR-CENTRAL-DIV-WIDTH);
+    max-width: var(--CUR-CENTRAL-DIV-WIDTH);
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.curBigDiv {
+    min-height: var(--CUR-BIG-DIV-HEIGHT);
+    max-height: var(--CUR-BIG-DIV-HEIGHT);
+    min-width: var(--CUR-BIG-DIV-WIDTH);
+    max-width: var(--CUR-BIG-DIV-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curBigIcon {
+    min-height: var(--CUR-BIG-ICON-HEIGHT);
+    max-height: var(--CUR-BIG-ICON-HEIGHT);
+    min-width: var(--CUR-BIG-ICON-WIDTH);
+    max-width: var(--CUR-BIG-ICON-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curBigImg {
+    min-height: var(--CUR-BIG-ICON-HEIGHT);
+    max-height: var(--CUR-BIG-ICON-HEIGHT);
+    min-width: var(--CUR-BIG-ICON-WIDTH);
+    max-width: var(--CUR-BIG-ICON-WIDTH);
+
+    object-fit: contain;
+}
+
+.curBigText {
+    height: var(--CUR-BIG-TEXT-HEIGHT);
+    width: var(--CUR-BIG-TEXT-WIDTH);
+
+    padding-left: 2vw;
+
+    font-size: var(--CUR-BIG-TEXT-FONT-SIZE);
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+}
+
+.curSmallDivContainer {
+    min-height: var(--CUR-SMALL-DIV-CONTAINER-HEIGHT);
+    max-height: var(--CUR-SMALL-DIV-CONTAINER-HEIGHT);
+    min-width: var(--CUR-SMALL-DIV-CONTAINER-WIDTH);
+    max-width: var(--CUR-SMALL-DIV-CONTAINER-WIDTH);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.curSmallDiv {
+    min-height: var(--CUR-SMALL-DIV-HEIGHT);
+    max-height: var(--CUR-SMALL-DIV-HEIGHT);
+    min-width: var(--CUR-SMALL-DIV-WIDTH);
+    max-width: var(--CUR-SMALL-DIV-WIDTH);
+
+    display: flex;
+    justify-content: center;
+}
+
+.curSmallIcon {
+    min-height: var(--CUR-SMALL-ICON-HEIGHT);
+    max-height: var(--CUR-SMALL-ICON-HEIGHT);
+    min-width: var(--CUR-SMALL-ICON-WIDTH);
+    max-width: var(--CUR-SMALL-ICON-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.curSmallText {
+    height: var(--CUR-SMALL-TEXT-HEIGHT);
+    width: var(--CUR-SMALL-TEXT-WIDTH);
+
+    margin-left: 2vw;
+
+    font-size: var(--CUR-SMALL-TEXT-FONT-SIZE);
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curSmallImg {
+    min-height: var(--CUR-SMALL-ICON-HEIGHT);
+    max-height: var(--CUR-SMALL-ICON-HEIGHT);
+    min-width: var(--CUR-SMALL-ICON-WIDTH);
+    max-width: var(--CUR-SMALL-ICON-WIDTH);
+
+    object-fit: contain;
 }
