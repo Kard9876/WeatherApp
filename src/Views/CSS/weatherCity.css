@@ -23,8 +23,17 @@
     --CUR-CENTRAL-DIV-HEIGHT: 30vh;
     --CUR-CENTRAL-DIV-WIDTH: 100vw;
 
+    /* Container Big Div */
+    --CUR-CONTAINER-BIG-DIV-HEIGHT: 30vh;
+    --CUR-CONTAINER-BIG-DIV-WIDTH: 60vw;
+
+    /* Time Text */
+    --CUR-TIME-TEXT-HEIGHT: 5vh;
+    --CUR-TIME-TEXT-WIDTH: 60vw;
+    --CUR-TIME-TEXT-FONT-SIZE: min(3.5vh, 12vw);
+
     /* Big Div */
-    --CUR-BIG-DIV-HEIGHT: 30vh;
+    --CUR-BIG-DIV-HEIGHT: 20vh;
     --CUR-BIG-DIV-WIDTH: 60vw;
 
     /* Big Div Icon */
@@ -52,6 +61,52 @@
     --CUR-SMALL-TEXT-HEIGHT: 8vh;
     --CUR-SMALL-TEXT-WIDTH: 15vw;
     --CUR-SMALL-TEXT-FONT-SIZE: min(2.5vh, 3vw);
+
+    /* Next Weather */
+
+    /* Central Div */
+    --NEXT-CENTRAL-DIV-HEIGHT: 20vh;
+    --NEXT-CENTRAL-DIV-WIDTH: 100vw;
+    --NEXT-CENTRAL-DIV-MARGIN-TOP: 5vh;
+
+    /* Container Big Div */
+    --NEXT-CONTAINER-BIG-DIV-HEIGHT: 20vh;
+    --NEXT-CONTAINER-BIG-DIV-WIDTH: 60vw;
+
+    /* Time Text */
+    --NEXT-TIME-TEXT-HEIGHT: 5vh;
+    --NEXT-TIME-TEXT-WIDTH: 60vw;
+    --NEXT-TIME-TEXT-FONT-SIZE: min(2.25vh, 12vw);
+
+    /* Big Div */
+    --NEXT-BIG-DIV-HEIGHT: 15vh;
+    --NEXT-BIG-DIV-WIDTH: 60vw;
+
+    /* Big Div Icon */
+    --NEXT-BIG-ICON-HEIGHT: 10vh;
+    --NEXT-BIG-ICON-WIDTH: 20vw;
+
+    /* Big Div Text */
+    --NEXT-BIG-TEXT-HEIGHT: 7vh;
+    --NEXT-BIG-TEXT-WIDTH: 28vw;
+    --NEXT-BIG-TEXT-FONT-SIZE: min(2vh, 5vw);
+
+    /* Small Div Container */
+    --NEXT-SMALL-DIV-CONTAINER-HEIGHT: 20vh;
+    --NEXT-SMALL-DIV-CONTAINER-WIDTH: 40vw;
+
+    /* SMALL Div */
+    --NEXT-SMALL-DIV-HEIGHT: 5vh;
+    --NEXT-SMALL-DIV-WIDTH: 35vw;
+
+    /* SMALL Div Icon */
+    --NEXT-SMALL-ICON-HEIGHT: 5vh;
+    --NEXT-SMALL-ICON-WIDTH: 10vw;
+
+    /* SMALL Div Text */
+    --NEXT-SMALL-TEXT-HEIGHT: 5vh;
+    --NEXT-SMALL-TEXT-WIDTH: 15vw;
+    --NEXT-SMALL-TEXT-FONT-SIZE: min(1.5vh, 3vw);
 }
 
 body {
@@ -92,7 +147,7 @@ body {
     color: var(--BACK-HOME-TAG-COLOR);
 }
 
-.centralDiv {
+.curCentralDiv {
     min-height: var(--CUR-CENTRAL-DIV-HEIGHT);
     max-height: var(--CUR-CENTRAL-DIV-HEIGHT);
     min-width: var(--CUR-CENTRAL-DIV-WIDTH);
@@ -100,6 +155,30 @@ body {
 
     display: flex;
     justify-content: space-evenly;
+}
+
+.curContainerBigDiv {
+    min-height: var(--CUR-CONTAINER-BIG-DIV-HEIGHT);
+    max-height: var(--CUR-CONTAINER-BIG-DIV-HEIGHT);
+    min-width: var(--CUR-CONTAINER-BIG-DIV-WIDTH);
+    max-width: var(--CUR-CONTAINER-BIG-DIV-WIDTH);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.curTimeText {
+    height: var(--CUR-TIME-TEXT-HEIGHT);
+    width: var(--CUR-TIME-TEXT-WIDTH);
+
+    font-size: var(--CUR-TIME-TEXT-FONT-SIZE);
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .curBigDiv {
@@ -198,6 +277,142 @@ body {
     max-height: var(--CUR-SMALL-ICON-HEIGHT);
     min-width: var(--CUR-SMALL-ICON-WIDTH);
     max-width: var(--CUR-SMALL-ICON-WIDTH);
+
+    object-fit: contain;
+}
+
+.nextCentralDiv {
+    min-height: var(--NEXT-CENTRAL-DIV-HEIGHT);
+    max-height: var(--NEXT-CENTRAL-DIV-HEIGHT);
+    min-width: var(--NEXT-CENTRAL-DIV-WIDTH);
+    max-width: var(--NEXT-CENTRAL-DIV-WIDTH);
+
+    margin-top: var(--NEXT-CENTRAL-DIV-MARGIN-TOP);
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nextContainerBigDiv {
+    min-height: var(--NEXT-CONTAINER-BIG-DIV-HEIGHT);
+    max-height: var(--NEXT-CONTAINER-BIG-DIV-HEIGHT);
+    min-width: var(--NEXT-CONTAINER-BIG-DIV-WIDTH);
+    max-width: var(--NEXT-CONTAINER-BIG-DIV-WIDTH);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextTimeText {
+    height: var(--NEXT-TIME-TEXT-HEIGHT);
+    width: var(--NEXT-TIME-TEXT-WIDTH);
+
+    font-size: var(--NEXT-TIME-TEXT-FONT-SIZE);
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBigDiv {
+    min-height: var(--NEXT-BIG-DIV-HEIGHT);
+    max-height: var(--NEXT-BIG-DIV-HEIGHT);
+    min-width: var(--NEXT-BIG-DIV-WIDTH);
+    max-width: var(--NEXT-BIG-DIV-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBigIcon {
+    min-height: var(--NEXT-BIG-ICON-HEIGHT);
+    max-height: var(--NEXT-BIG-ICON-HEIGHT);
+    min-width: var(--NEXT-BIG-ICON-WIDTH);
+    max-width: var(--NEXT-BIG-ICON-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBigImg {
+    min-height: var(--NEXT-BIG-ICON-HEIGHT);
+    max-height: var(--NEXT-BIG-ICON-HEIGHT);
+    min-width: var(--NEXT-BIG-ICON-WIDTH);
+    max-width: var(--NEXT-BIG-ICON-WIDTH);
+
+    object-fit: contain;
+}
+
+.nextBigText {
+    height: var(--NEXT-BIG-TEXT-HEIGHT);
+    width: var(--NEXT-BIG-TEXT-WIDTH);
+
+    padding-left: 2vw;
+
+    font-size: var(--NEXT-BIG-TEXT-FONT-SIZE);
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+}
+
+.nextSmallDivContainer {
+    min-height: var(--NEXT-SMALL-DIV-CONTAINER-HEIGHT);
+    max-height: var(--NEXT-SMALL-DIV-CONTAINER-HEIGHT);
+    min-width: var(--NEXT-SMALL-DIV-CONTAINER-WIDTH);
+    max-width: var(--NEXT-SMALL-DIV-CONTAINER-WIDTH);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.nextSmallDiv {
+    min-height: var(--NEXT-SMALL-DIV-HEIGHT);
+    max-height: var(--NEXT-SMALL-DIV-HEIGHT);
+    min-width: var(--NEXT-SMALL-DIV-WIDTH);
+    max-width: var(--NEXT-SMALL-DIV-WIDTH);
+
+    display: flex;
+    justify-content: center;
+}
+
+.nextSmallIcon {
+    min-height: var(--NEXT-SMALL-ICON-HEIGHT);
+    max-height: var(--NEXT-SMALL-ICON-HEIGHT);
+    min-width: var(--NEXT-SMALL-ICON-WIDTH);
+    max-width: var(--NEXT-SMALL-ICON-WIDTH);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nextSmallText {
+    height: var(--NEXT-SMALL-TEXT-HEIGHT);
+    width: var(--NEXT-SMALL-TEXT-WIDTH);
+
+    margin-left: 2vw;
+
+    font-size: var(--NEXT-SMALL-TEXT-FONT-SIZE);
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextSmallImg {
+    min-height: var(--NEXT-SMALL-ICON-HEIGHT);
+    max-height: var(--NEXT-SMALL-ICON-HEIGHT);
+    min-width: var(--NEXT-SMALL-ICON-WIDTH);
+    max-width: var(--NEXT-SMALL-ICON-WIDTH);
 
     object-fit: contain;
 }

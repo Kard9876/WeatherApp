@@ -28,15 +28,13 @@ const weatherIcons = {
 window.loadPage = function loadPage() {
     let cityId = getCookieValue(cityIdCookieName)
 
-    /*
     if (cityId.length == 0) {
         window.location = backHomeURL
 
         return
     }
-    
+
     deleteCookie(cityIdCookieName)
-    */
 
     searchCityWeather(cityId)
 }
@@ -76,7 +74,11 @@ function searchCityWeather(cityId) {
             // TODO
             fetch(next5WeatherApiURL).then((res) => res.json()).then((data) => {
                 console.log("Next")
-                console.log(data)
+
+                for (let result of data.list) {
+                    nextWeatherDiv(result)
+                    console.log(result)
+                }
             })
         })
 }
@@ -118,23 +120,23 @@ function getWeatherIcon(cod) {
  */
 function createCurWeatherDiv(weatherId, weather, weatherDescription, temperature, humidity, wind) {
     let container = document.createElement("div")
-    container.classList = "centralDiv"
+    container.classList = "curCentralDiv"
 
     // Div containing weather's icon and type
-    let bigDiv = createWeatherImage(weatherId, weather, weatherDescription, "curBigIcon", "curBigText")
+    let bigDiv = createWeatherImage(weatherId, weather, weatherDescription, "curContainerBigDiv", "Current Weather", "curTimeText", "curBigDiv", "curBigIcon", "curBigImg", "curBigText")
 
     // Div containing details such as temperature, humidity and wind speed
     let smallDivContainer = document.createElement("div")
     smallDivContainer.classList = "curSmallDivContainer"
 
     // Temperature div
-    let smallDiv1 = createTemperatureElem(temperature, "curSmallIcon", "curSmallText")
+    let smallDiv1 = createTemperatureElem(temperature, "curSmallDiv", "curSmallIcon", "curSmallImg", "curSmallText")
 
     // Humidity div
-    let smallDiv2 = createHumidityElem(humidity, "curSmallIcon", "curSmallText")
+    let smallDiv2 = createHumidityElem(humidity, "curSmallDiv", "curSmallIcon", "curSmallImg", "curSmallText")
 
     // Wind div
-    let smallDiv3 = createWindElem(wind, "curSmallIcon", "curSmallText")
+    let smallDiv3 = createWindElem(wind, "curSmallDiv", "curSmallIcon", "curSmallImg", "curSmallText")
 
     smallDivContainer.append(smallDiv1)
     smallDivContainer.append(smallDiv2)
@@ -151,21 +153,35 @@ function createCurWeatherDiv(weatherId, weather, weatherDescription, temperature
  * @param {*} weatherId Weather's id
  * @param {*} weather Weather's name
  * @param {*} weatherDescription Weather's description
+ * @param {*} containerDivClassList General container classes
+ * @param {*} weatherTimeText Weather's time
+ * @param {*} weatherTimeClassList Waether's time element's classes
+ * @param {*} divClassList Container div's classes
+ * @param {*} imageDivClassList Image's container div's classes
  * @param {*} imageClassList Image's classes
  * @param {*} textClassList Text's classes
  * @returns Current weather's general information
  */
-function createWeatherImage(weatherId, weather, weatherDescription, imageClassList, textClassList) {
+function createWeatherImage(weatherId, weather, weatherDescription, containerDivClassList, weatherTimeText, weatherTimeClassList, divClassList, imageDivClassList, imageClassList, textClassList) {
+    let containerDiv = document.createElement("div");
+    containerDiv.classList = containerDivClassList
+
+    let weatherTime = document.createElement("p");
+    weatherTime.innerHTML = weatherTimeText
+    weatherTime.classList = weatherTimeClassList
+
+    containerDiv.append(weatherTime)
+
     let div = document.createElement("div")
-    div.classList = "curBigDiv"
+    div.classList = divClassList
 
     let imageDiv = document.createElement("div")
-    imageDiv.classList = imageClassList
+    imageDiv.classList = imageDivClassList
 
     let image = document.createElement("img")
     image.src = getWeatherIcon(weatherId)
     image.alt = weatherDescription
-    image.classList = "curBigImg"
+    image.classList = imageClassList
 
     imageDiv.append(image)
 
@@ -176,27 +192,31 @@ function createWeatherImage(weatherId, weather, weatherDescription, imageClassLi
     div.append(imageDiv)
     div.append(weatherType)
 
-    return div
+    containerDiv.append(div)
+
+    return containerDiv
 }
 
 /**
- * Create current weather's temperature information
+ * Create current weather's temperature information~
  * @param {*} temperature Weather's temperature
+ * @param {*} divClassList Container div's classes
+ * @param {*} imageDivClassList Image's container div's classes
  * @param {*} imageClassList Image's classes
  * @param {*} textClassList Text's classes
  * @returns Current weather's temperature information
  */
-function createTemperatureElem(temperature, imageClassList, textClassList) {
+function createTemperatureElem(temperature, divClassList, imageDivClassList, imageClassList, textClassList) {
     let div = document.createElement("div")
-    div.classList = "curSmallDiv"
+    div.classList = divClassList
 
     let imageDiv = document.createElement("div")
-    imageDiv.classList = imageClassList
+    imageDiv.classList = imageDivClassList
 
     let temperatureImg = document.createElement("img")
     temperatureImg.src = '../Images/thermometer.png'
     temperatureImg.alt = 'Temperature:'
-    temperatureImg.classList = "curSmallImg"
+    temperatureImg.classList = imageClassList
 
     imageDiv.append(temperatureImg)
 
@@ -211,23 +231,25 @@ function createTemperatureElem(temperature, imageClassList, textClassList) {
 }
 
 /**
- * Create current weather's humidity information
+ * Create current weather's humidity information´
  * @param {*} humidity Weather's humidity
+ * @param {*} divClassList Container div's classes
+ * @param {*} imageDivClassList Image's container div's classes
  * @param {*} imageClassList Image's classes
  * @param {*} textClassList Text's classes
  * @returns Current weather's humidity information
  */
-function createHumidityElem(humidity, imageClassList, textClassList) {
+function createHumidityElem(humidity, divClassList, imageDivClassList, imageClassList, textClassList) {
     let div = document.createElement("div")
-    div.classList = "curSmallDiv"
+    div.classList = divClassList
 
     let imageDiv = document.createElement("div")
-    imageDiv.classList = imageClassList
+    imageDiv.classList = imageDivClassList
 
     let humidityImg = document.createElement("img")
     humidityImg.src = '../Images/humidity.png'
     humidityImg.alt = 'Humidity:'
-    humidityImg.classList = "curSmallImg"
+    humidityImg.classList = imageClassList
 
     imageDiv.append(humidityImg)
 
@@ -244,21 +266,23 @@ function createHumidityElem(humidity, imageClassList, textClassList) {
 /**
  * Create current weather's wind speed information
  * @param {*} wind Weather's wind speed
+ * @param {*} divClassList Container div's classes
+ * @param {*} imageDivClassList Image's container div's classes
  * @param {*} imageClassList Image's classes
  * @param {*} textClassList Text's classes
  * @returns Current weather's wind speed information
  */
-function createWindElem(wind, imageClassList, textClassList) {
+function createWindElem(wind, divClassList, imageDivClassList, imageClassList, textClassList) {
     let div = document.createElement("div")
-    div.classList = "curSmallDiv"
+    div.classList = divClassList
 
     let imageDiv = document.createElement("div")
-    imageDiv.classList = imageClassList
+    imageDiv.classList = imageDivClassList
 
     let windImg = document.createElement("img")
     windImg.src = '../Images/wind.png'
     windImg.alt = 'Wind Speed:'
-    windImg.classList = "curSmallImg"
+    windImg.classList = imageClassList
 
     imageDiv.append(windImg)
 
@@ -270,4 +294,65 @@ function createWindElem(wind, imageClassList, textClassList) {
     div.append(windP)
 
     return div
+}
+
+/**
+ * Function that displays graphically the weather's data
+ * @param {*} weatherData 
+ */
+function nextWeatherDiv(weatherData) {
+    let weatherId = weatherData.weather[0].id
+    let weather = weatherData.weather[0].main
+    let weatherDescription = weatherData.weather[0].description
+    let weatherTime = weatherData.dt_txt.substring(0, weatherData.dt_txt.lastIndexOf(':'))
+    let temperature = weatherData.main.temp
+    let humidity = weatherData.main.humidity
+    let wind = weatherData.wind.speed
+
+    let container = document.getElementById('nextWeather')
+
+    let elem = createNextWeatherDiv(weatherId, weather, weatherDescription, weatherTime, temperature, humidity, wind)
+
+    container.append(elem)
+}
+
+/**
+ * Function that creates the graphical information of the weather data
+ * @param {*} weatherId Weather's id
+ * @param {*} weather Weather's name
+ * @param {*} weatherDescription Weather's description
+ * @param {*} weatherTime Weather's time
+ * @param {*} temperature Weather's temperature
+ * @param {*} humidity Weather's humidity
+ * @param {*} wind Weather's wind speed
+ * @returns A div with all graphical information of the weather data
+ */
+function createNextWeatherDiv(weatherId, weather, weatherDescription, weatherTime, temperature, humidity, wind) {
+    let container = document.createElement("div")
+    container.classList = "nextCentralDiv"
+
+    // Div containing weather's icon and type
+    let bigDiv = createWeatherImage(weatherId, weather, weatherDescription, "nextContainerBigDiv", weatherTime, "nextTimeText", "nextBigDiv", "nextBigIcon", "nextBigImg", "nextBigText")
+
+    // Div containing details such as temperature, humidity and wind speed
+    let smallDivContainer = document.createElement("div")
+    smallDivContainer.classList = "nextSmallDivContainer"
+
+    // Temperature div
+    let smallDiv1 = createTemperatureElem(temperature, "nextSmallDiv", "nextSmallIcon", "nextSmallImg", "nextSmallText")
+
+    // Humidity div
+    let smallDiv2 = createHumidityElem(humidity, "nextSmallDiv", "nextSmallIcon", "nextSmallImg", "nextSmallText")
+
+    // Wind div
+    let smallDiv3 = createWindElem(wind, "nextSmallDiv", "nextSmallIcon", "nextSmallImg", "nextSmallText")
+
+    smallDivContainer.append(smallDiv1)
+    smallDivContainer.append(smallDiv2)
+    smallDivContainer.append(smallDiv3)
+
+    container.append(bigDiv)
+    container.append(smallDivContainer)
+
+    return container
 }
