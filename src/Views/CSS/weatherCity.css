@@ -9,7 +9,7 @@
 
     /* Back Home Div */
     --BACK-HOME-DIV-HEIGHT: 10vh;
-    --BACK-HOME-DIV-WIDTH: 100vw;
+    --BACK-HOME-DIV-WIDTH: 95vw;
 
     /* Back Home Tag */
     --BACK-HOME-TAG-HEIGHT: 8vh;
@@ -21,20 +21,21 @@
 
     /* Central Div */
     --CUR-CENTRAL-DIV-HEIGHT: 30vh;
-    --CUR-CENTRAL-DIV-WIDTH: 100vw;
+    --CUR-CENTRAL-DIV-WIDTH: 95vw;
+    --CUR-CENTRAL-DIV-MARGIN-BOTTOM: 15px;
 
     /* Container Big Div */
     --CUR-CONTAINER-BIG-DIV-HEIGHT: 30vh;
-    --CUR-CONTAINER-BIG-DIV-WIDTH: 60vw;
+    --CUR-CONTAINER-BIG-DIV-WIDTH: 55vw;
 
     /* Time Text */
     --CUR-TIME-TEXT-HEIGHT: 5vh;
-    --CUR-TIME-TEXT-WIDTH: 60vw;
+    --CUR-TIME-TEXT-WIDTH: var(--CUR-CONTAINER-BIG-DIV-WIDTH);
     --CUR-TIME-TEXT-FONT-SIZE: min(3.5vh, 12vw);
 
     /* Big Div */
     --CUR-BIG-DIV-HEIGHT: 20vh;
-    --CUR-BIG-DIV-WIDTH: 60vw;
+    --CUR-BIG-DIV-WIDTH: var(--CUR-CONTAINER-BIG-DIV-WIDTH);
 
     /* Big Div Icon */
     --CUR-BIG-ICON-HEIGHT: 20vh;
@@ -66,21 +67,22 @@
 
     /* Central Div */
     --NEXT-CENTRAL-DIV-HEIGHT: 20vh;
-    --NEXT-CENTRAL-DIV-WIDTH: 100vw;
+    --NEXT-CENTRAL-DIV-WIDTH: 95vw;
     --NEXT-CENTRAL-DIV-MARGIN-TOP: 5vh;
+    --NEXT-CENTRAL-DIV-MARGIN-BOTTOM: 15px;
 
     /* Container Big Div */
     --NEXT-CONTAINER-BIG-DIV-HEIGHT: 20vh;
-    --NEXT-CONTAINER-BIG-DIV-WIDTH: 60vw;
+    --NEXT-CONTAINER-BIG-DIV-WIDTH: 55vw;
 
     /* Time Text */
     --NEXT-TIME-TEXT-HEIGHT: 5vh;
-    --NEXT-TIME-TEXT-WIDTH: 60vw;
+    --NEXT-TIME-TEXT-WIDTH: var(--NEXT-CONTAINER-BIG-DIV-WIDTH);
     --NEXT-TIME-TEXT-FONT-SIZE: min(2.25vh, 12vw);
 
     /* Big Div */
     --NEXT-BIG-DIV-HEIGHT: 15vh;
-    --NEXT-BIG-DIV-WIDTH: 60vw;
+    --NEXT-BIG-DIV-WIDTH: var(--NEXT-CONTAINER-BIG-DIV-WIDTH);
 
     /* Big Div Icon */
     --NEXT-BIG-ICON-HEIGHT: 10vh;
@@ -153,8 +155,13 @@ body {
     min-width: var(--CUR-CENTRAL-DIV-WIDTH);
     max-width: var(--CUR-CENTRAL-DIV-WIDTH);
 
+    margin-bottom: var(--CUR-CENTRAL-DIV-MARGIN-BOTTOM);
+
     display: flex;
     justify-content: space-evenly;
+
+    border: 2px solid white;
+    border-radius: 15px;
 }
 
 .curContainerBigDiv {
@@ -287,10 +294,13 @@ body {
     min-width: var(--NEXT-CENTRAL-DIV-WIDTH);
     max-width: var(--NEXT-CENTRAL-DIV-WIDTH);
 
-    margin-top: var(--NEXT-CENTRAL-DIV-MARGIN-TOP);
+    margin-bottom: var(--NEXT-CENTRAL-DIV-MARGIN-BOTTOM);
 
     display: flex;
     justify-content: space-evenly;
+
+    border: 2px solid white;
+    border-radius: 15px;
 }
 
 .nextContainerBigDiv {

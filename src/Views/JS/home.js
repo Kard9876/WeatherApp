@@ -9,11 +9,11 @@ const weatherCityURL = '../HTML/weatherCity.html'
 window.loadPage = function loadPage() {
     let searchIcon = document.getElementById("searchIcon")
 
-    searchIcon.addEventListener('submit', searchCities)
+    searchIcon.addEventListener('submit', searchCitiesSubmit)
 }
 
 // Function that searches for the user's desired cities 
-window.searchCities = function searchCities(event) {
+window.searchCitiesSubmit = function searchCitiesSubmit(event) {
     event.preventDefault()
 
     let seachDiv = event.target.childNodes[1]
@@ -27,6 +27,10 @@ window.searchCities = function searchCities(event) {
     cityElem.value = ""
     countryElem.value = ""
 
+    displaySearchResults(city, country)
+}
+
+function displaySearchResults(city, country) {
     fetch(searchCitiesURL + new URLSearchParams({ city: city, country: country }))
         .then((res) => res.json()).then((data) => {
 
@@ -57,6 +61,15 @@ window.searchCities = function searchCities(event) {
             }
 
         })
+}
+
+window.searchCitiesChange = function searchCitiesChange() {
+    let city = document.getElementById("cityName").value
+    let country = document.getElementById("countryName").value
+
+    if (city == "" && country == "") return
+
+    displaySearchResults(city, country)
 }
 
 // Function that load the page with the city's weather

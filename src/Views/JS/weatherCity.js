@@ -73,11 +73,8 @@ function searchCityWeather(cityId) {
             // Current Weather
             // TODO
             fetch(next5WeatherApiURL).then((res) => res.json()).then((data) => {
-                console.log("Next")
-
                 for (let result of data.list) {
                     nextWeatherDiv(result)
-                    console.log(result)
                 }
             })
         })

@@ -9,7 +9,7 @@
 
     /* Search Bar */
     --SEARCH-BAR-HEIGHT: 20vh;
-    --SEARCH-BAR-WIDTH: 100vw;
+    --SEARCH-BAR-WIDTH: 95vw;
 
     /* Search Icon */
     --SEARCH-ICON-HEIGHT-WIDTH: min(15Vh, 15vw);
@@ -25,12 +25,14 @@
 
     /* Search Result */
     --SEARCH-RESULT-HEIGHT: 10vh;
-    --SEARCH-RESULT-WIDTH: 90vw;
+    --SEARCH-RESULT-WIDTH: 80vw;
     --SEARCH-RESULT-MARGIN-LEFT: 10vw;
+    --SEARCH-RESULT-MARGIN-BOTTOM: 15px;
 
     /* Search Result Content */
     --SEARCH-RESULT-CONTENT-HEIGHT: 8vh;
-    --SEARCH-RESULT-CONTENT-WIDTH: 80vw;
+    --SEARCH-RESULT-CONTENT-WIDTH: 75vw;
+    --SEARCH-RESULT-CONTENT-MARING-LEFT-RIGHT: 2.5vw;
     --SEARCH-RESULT-CONTENT-FONT-SIZE: min(3vh, 12vw);
 }
 
@@ -81,15 +83,22 @@ body {
     max-width: var(--SEARCH-RESULT-WIDTH);
 
     margin-left: var(--SEARCH-RESULT-MARGIN-LEFT);
+    margin-bottom: var(--SEARCH-RESULT-MARGIN-BOTTOM);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    border: 2px solid white;
+    border-radius: 15px;
 }
 
 .searchResultContent {
     height: var(--SEARCH-RESULT-CONTENT-HEIGHT);
     width: var(--SEARCH-RESULT-CONTENT-WIDTH);
+
+    margin-left: var(--SEARCH-RESULT-CONTENT-MARING-LEFT-RIGHT);
+    margin-right: var(--SEARCH-RESULT-CONTENT-MARING-LEFT-RIGHT);
 
     font-size: var(--SEARCH-RESULT-CONTENT-FONT-SIZE);
     font-weight: 600;

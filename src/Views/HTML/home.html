@@ -12,10 +12,13 @@
 </head>
 
 <body onload="loadPage()">
-    <form class="searchBar" onsubmit="searchCities(event)">
+    <form class="searchBar" onsubmit="searchCitiesSubmit(event)">
         <div class="textInputsContainer">
-            <input type="text" class="searchInput" placeholder="City">
-            <input type="text" class="searchInput" placeholder="Country">
+            <input type="text" id="cityName" class="searchInput" placeholder="City" onchange="searchCitiesChange()"
+                onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();">
+            <input type="text" id="countryName" class="searchInput" placeholder="Country"
+                onchange="searchCitiesChange()" onkeyup="this.onchange();" onpaste="this.onchange();"
+                oninput="this.onchange();">
         </div>
         <input type="image" src="../Images/searchIcon.png" class="searchIcon" id="searchIcon">
     </form>
